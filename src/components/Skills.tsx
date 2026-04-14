@@ -2,12 +2,12 @@ import { useRef, useEffect, useState } from 'react';
 import { Code2, Smartphone, Palette, Video, TrendingUp, Cpu } from 'lucide-react';
 
 const skills = [
-  { icon: Code2, name: 'Web Development', desc: 'HTML, CSS, JS, Django, React', level: 90, color: '#0ea5e9' },
-  { icon: Smartphone, name: 'Mobile Applications', desc: 'Cross-platform mobile apps', level: 78, color: '#38bdf8' },
-  { icon: Palette, name: 'Graphic Design', desc: 'UI/UX, Branding, Visual Identity', level: 85, color: '#0284c7' },
-  { icon: Video, name: 'Video Production', desc: 'Pro editing & motion graphics', level: 80, color: '#0ea5e9' },
-  { icon: TrendingUp, name: 'Digital Marketing', desc: 'SEO, Social Media, Campaigns', level: 75, color: '#38bdf8' },
-  { icon: Cpu, name: 'Embedded Systems', desc: 'Arduino, IoT, Low-level dev', level: 72, color: '#0284c7' },
+  { icon: Code2, name: 'Développement Web', desc: 'HTML, CSS, JS, Django, React', level: 90, color: '#0ea5e9' },
+  { icon: Smartphone, name: 'Applications Mobiles', desc: 'Apps multiplateformes natives', level: 78, color: '#38bdf8' },
+  { icon: Palette, name: 'Design Graphique', desc: 'UI/UX, Branding, Identité Visuelle', level: 85, color: '#0284c7' },
+  { icon: Video, name: 'Production Vidéo', desc: 'Montage pro & motion graphics', level: 80, color: '#0ea5e9' },
+  { icon: TrendingUp, name: 'Marketing Digital', desc: 'SEO, Réseaux Sociaux, Campagnes', level: 75, color: '#38bdf8' },
+  { icon: Cpu, name: 'Systèmes Embarqués', desc: 'Arduino, IoT, dév bas niveau', level: 72, color: '#0284c7' },
 ];
 
 function SkillCard({
@@ -28,7 +28,7 @@ function SkillCard({
       <h3 className="text-white font-semibold text-base mb-1">{skill.name}</h3>
       <p className="text-slate-500 text-sm mb-4 leading-relaxed">{skill.desc}</p>
       <div className="flex items-center justify-between text-xs mb-2">
-        <span className="text-slate-400">Proficiency</span>
+        <span className="text-slate-400">Maîtrise</span>
         <span className="text-electric font-semibold">{skill.level}%</span>
       </div>
       <div className="skill-bar">
@@ -75,13 +75,12 @@ export default function Skills() {
     <section id="skills" className="py-28 relative" ref={sectionRef}>
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center max-w-2xl mx-auto mb-16 reveal">
-          <div className="section-tag justify-center">My Skills</div>
-          <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-4">
-            Technical <span className="gradient-text">Expertise</span>
+          <div className="section-tag justify-center">Mes Compétences</div>
+          <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-4">
+            Expertise <span className="gradient-text">Technique</span>
           </h2>
           <p className="text-slate-400 text-lg leading-relaxed">
-            A versatile skill set spanning software development, design, and digital strategy —
-            built to deliver end-to-end solutions.
+            Un ensemble de compétences polyvalentes couvrant le développement logiciel, le design et la stratégie digitale.
           </p>
         </div>
 
@@ -99,7 +98,7 @@ export default function Skills() {
 
         <div className="mt-16 glass rounded-2xl p-8 border border-electric/10 reveal">
           <div className="text-center mb-6">
-            <h3 className="text-white font-semibold text-lg">Technologies &amp; Tools</h3>
+            <h3 className="text-white font-semibold text-lg">Technologies &amp; Outils</h3>
           </div>
           <div className="flex flex-wrap justify-center gap-3">
             {[

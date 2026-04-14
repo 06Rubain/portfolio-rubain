@@ -4,44 +4,44 @@ import { Globe, LayoutGrid as Layout, Smartphone, Palette, Video, BarChart2, Arr
 const services = [
   {
     icon: Globe,
-    title: 'Website Development',
-    desc: 'From elegant landing pages to full-stack dynamic platforms — fast, secure, and conversion-optimized.',
-    benefits: ['SEO-optimized & responsive', 'High-performance architecture', 'Custom CMS integration'],
-    tag: 'Most Popular',
+    title: 'Développement de Sites Web',
+    desc: 'Des élégantes landing pages aux plateformes dynamiques full-stack — rapides, sécurisées et optimisées pour la conversion.',
+    benefits: ['Optimisé SEO & responsive', 'Architecture haute performance', 'Intégration CMS sur mesure'],
+    tag: 'Plus Populaire',
   },
   {
     icon: Smartphone,
-    title: 'Web & Mobile Apps',
-    desc: 'Scalable applications that work flawlessly across all devices, built with modern frameworks.',
-    benefits: ['Cross-platform compatibility', 'Intuitive UX/UI design', 'API integration & backend'],
+    title: 'Applications Web & Mobiles',
+    desc: 'Des applications évolutives qui fonctionnent parfaitement sur tous les appareils, bâties avec des frameworks modernes.',
+    benefits: ['Compatibilité multiplateforme', 'Design UX/UI intuitif', 'Intégration API & backend'],
     tag: null,
   },
   {
     icon: Palette,
     title: 'Branding & Design',
-    desc: 'Distinctive visual identities that tell your story and set you apart from the competition.',
-    benefits: ['Logo & brand identity', 'UI/UX design systems', 'Marketing collaterals'],
+    desc: 'Des identités visuelles distinctives qui racontent votre histoire et vous démarquent de la concurrence.',
+    benefits: ['Logo & identité de marque', 'Systèmes de design UI/UX', 'Supports marketing'],
     tag: null,
   },
   {
     icon: Video,
-    title: 'Video Production',
-    desc: 'Professional video editing and motion graphics to captivate your audience and elevate your brand.',
-    benefits: ['Cinematic editing', 'Motion graphics & VFX', 'Social media formats'],
+    title: 'Production Vidéo',
+    desc: 'Montage vidéo professionnel et motion graphics pour captiver votre audience et élever votre marque.',
+    benefits: ['Montage cinématique', 'Motion graphics & VFX', 'Formats réseaux sociaux'],
     tag: null,
   },
   {
     icon: BarChart2,
-    title: 'Digital Marketing',
-    desc: 'Data-driven strategies that grow your online presence, generate leads, and maximize ROI.',
-    benefits: ['SEO & SEM strategy', 'Social media management', 'Performance analytics'],
+    title: 'Marketing Digital',
+    desc: 'Stratégies basées sur les données qui font croître votre présence en ligne et maximisent votre ROI.',
+    benefits: ['Stratégie SEO & SEM', 'Gestion réseaux sociaux', 'Analyses de performance'],
     tag: null,
   },
   {
     icon: Layout,
-    title: 'Tech Consulting',
-    desc: 'Expert guidance on digital transformation, architecture decisions, and technology strategy.',
-    benefits: ['Tech stack selection', 'Digital roadmap planning', 'Process automation'],
+    title: 'Consulting Tech',
+    desc: 'Accompagnement expert sur la transformation digitale, l\'architecture et la stratégie technologique.',
+    benefits: ['Choix de stack technique', 'Feuille de route digitale', 'Automatisation de processus'],
     tag: 'Premium',
   },
 ];
@@ -76,12 +76,12 @@ export default function Services() {
       />
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center max-w-2xl mx-auto mb-16 reveal">
-          <div className="section-tag justify-center">What I Offer</div>
-          <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-4">
-            Services <span className="gradient-text">Designed to Scale</span>
+          <div className="section-tag justify-center">Ce Que Je Propose</div>
+          <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-4">
+            Services <span className="gradient-text">Conçus pour Grandir</span>
           </h2>
           <p className="text-slate-400 text-lg leading-relaxed">
-            End-to-end digital solutions tailored to your goals — from concept to launch and beyond.
+            Des solutions numériques de bout en bout adaptées à vos objectifs — du concept au lancement et au-delà.
           </p>
         </div>
 
@@ -121,7 +121,7 @@ export default function Services() {
                 onClick={() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })}
                 className="flex items-center gap-2 text-electric text-sm font-semibold hover:gap-3 transition-all duration-200 group/btn"
               >
-                Get Started <ArrowRight size={15} className="group-hover/btn:translate-x-1 transition-transform" />
+                Commencer <ArrowRight size={15} className="group-hover/btn:translate-x-1 transition-transform" />
               </button>
 
               <div

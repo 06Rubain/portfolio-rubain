@@ -4,41 +4,41 @@ import { Zap, Target, Layers, Clock, Users, Award } from 'lucide-react';
 const reasons = [
   {
     icon: Zap,
-    title: 'Innovation-First',
-    desc: 'Every project starts with a fresh perspective. I apply the latest technologies and creative thinking to solve complex problems in elegant ways.',
+    title: 'Innovation Prioritaire',
+    desc: 'Chaque projet commence par une perspective nouvelle. J\'applique les dernières technologies et une pensée créative pour résoudre des problèmes complexes de manière élégante.',
   },
   {
     icon: Target,
-    title: 'Results-Driven',
-    desc: 'I focus on measurable outcomes — not just beautiful interfaces. Your success metrics guide every design and technical decision.',
+    title: 'Axé sur les Résultats',
+    desc: 'Je me concentre sur des résultats mesurables — pas seulement sur de belles interfaces. Vos indicateurs de succès guident chaque décision technique et de design.',
   },
   {
     icon: Layers,
-    title: 'Full-Stack Expertise',
-    desc: 'From database architecture to pixel-perfect UI, I handle the entire product lifecycle — eliminating friction and handoff delays.',
+    title: 'Expertise Full-Stack',
+    desc: 'De l\'architecture de base de données à l\'interface utilisateur parfaite, je gère tout le cycle de vie du produit — éliminant les frictions et délais.',
   },
   {
     icon: Clock,
-    title: 'On-Time Delivery',
-    desc: 'Deadlines are commitments. Rigorous project planning and agile execution ensure your product launches when it should.',
+    title: 'Livraison Ponctuelle',
+    desc: 'Les délais sont des engagements. Une planification rigoureuse et une exécution agile garantissent que votre produit sort quand il le faut.',
   },
   {
     icon: Users,
-    title: 'Client-Centered',
-    desc: 'Transparent communication at every step. You are always in the loop, with full ownership of your project.',
+    title: 'Centré sur le Client',
+    desc: 'Une communication transparente à chaque étape. Vous êtes toujours au courant, avec une pleine propriété de votre projet.',
   },
   {
     icon: Award,
-    title: 'Premium Quality',
-    desc: 'Code quality, design precision, and performance optimization are non-negotiable standards in every deliverable.',
+    title: 'Qualité Premium',
+    desc: 'Qualité du code, précision du design et optimisation des performances sont des standards non négociables dans chaque livrable.',
   },
 ];
 
 const stats = [
-  { value: '50+', label: 'Projects Delivered' },
-  { value: '30+', label: 'Happy Clients' },
-  { value: '3+', label: 'Years Experience' },
-  { value: '100%', label: 'Client Satisfaction' },
+  { value: '50+', label: 'Projets Réalisés' },
+  { value: '30+', label: 'Clients Heureux' },
+  { value: '3+', label: 'Années d\'Expérience' },
+  { value: '100%', label: 'Satisfaction Client' },
 ];
 
 export default function Impact() {
@@ -72,13 +72,12 @@ export default function Impact() {
 
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center max-w-2xl mx-auto mb-16 reveal">
-          <div className="section-tag justify-center">Why Work With Me</div>
-          <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-4">
-            The Difference That{' '}
-            <span className="gradient-text">Matters</span>
+          <div className="section-tag justify-center">Pourquoi me choisir</div>
+          <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-4">
+            La Différence Qui <span className="gradient-text">Compte</span>
           </h2>
           <p className="text-slate-400 text-lg leading-relaxed">
-            I don't just build products — I build competitive advantages. Here is what sets my approach apart.
+            Je ne me contente pas de construire des produits — je crée des avantages compétitifs. Voici ce qui distingue mon approche.
           </p>
         </div>
 

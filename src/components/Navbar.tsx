@@ -39,7 +39,7 @@ export default function Navbar() {
         <a
           href="#"
           className="text-xl font-bold tracking-tight"
-          style={{ fontFamily: 'Syne, sans-serif' }}
+          style={{ fontFamily: 'Outfit, sans-serif' }}
         >
           <span className="text-white">Rubain</span>
           <span className="text-electric">.</span>
@@ -87,7 +87,7 @@ export default function Navbar() {
       {open && (
         <div className="md:hidden glass border-t border-white/5 px-6 py-5 flex flex-col gap-4">
           <div className="flex justify-between items-center mb-2">
-            <span className="text-slate-400 text-sm">Language</span>
+            <span className="text-slate-400 text-sm">{language === 'fr' ? 'Langue' : 'Language'}</span>
             <button
               onClick={() => setLanguage(language === 'fr' ? 'en' : 'fr')}
               className="flex items-center gap-2 text-white bg-white/10 px-3 py-1.5 rounded-md"
