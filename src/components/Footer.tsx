@@ -1,8 +1,8 @@
 import { MessageCircle, Linkedin, Facebook, Mail, ArrowUp, Github } from 'lucide-react';
 
 const navLinks = [
-  { label: 'About', href: '#about' },
-  { label: 'Skills', href: '#skills' },
+  { label: 'À Propos', href: '#about' },
+  { label: 'Compétences', href: '#skills' },
   { label: 'Services', href: '#services' },
   { label: 'Portfolio', href: '#portfolio' },
   { label: 'Contact', href: '#contact' },
@@ -59,13 +59,13 @@ export default function Footer() {
       <div className="relative max-w-7xl mx-auto px-6 py-16">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
           <div>
-            <a href="#" className="text-2xl font-bold tracking-tight mb-4 inline-block" style={{ fontFamily: 'Syne, sans-serif' }}>
+            <a href="#" className="text-2xl font-bold tracking-tight mb-4 inline-block" style={{ fontFamily: 'Outfit, sans-serif' }}>
               <span className="text-white">Rubain</span>
               <span className="text-electric"> Ntita</span>
               <span className="text-electric">.</span>
             </a>
             <p className="text-slate-500 text-sm leading-relaxed mb-5 max-w-xs">
-              Software Engineer &amp; CEO of OmniCom. Building the future through technology, one project at a time.
+              Ingénieur Logiciel & PDG d'OmniCom. Bâtir le futur par la technologie, un projet à la fois.
             </p>
             <div className="flex items-center gap-4">
               {socialLinks.map(({ icon: Icon, href, label, color }) => (
@@ -100,7 +100,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="text-white font-semibold mb-5 text-sm uppercase tracking-wider">Contact Info</h4>
+            <h4 className="text-white font-semibold mb-5 text-sm uppercase tracking-wider">Infos Contact</h4>
             <div className="flex flex-col gap-3">
               <a
                 href="mailto:mpunantitarubain@gmail.com"
@@ -124,10 +124,10 @@ export default function Footer() {
         <div className="border-t border-white/5 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="text-center sm:text-left">
             <p className="text-electric text-sm font-semibold italic mb-1">
-              "Building the future through technology"
+              "Bâtir le futur par la technologie"
             </p>
             <p className="text-slate-600 text-xs">
-              &copy; {new Date().getFullYear()} Rubain Ntita. All rights reserved.
+              &copy; {new Date().getFullYear()} Rubain Ntita. Tous droits réservés.
             </p>
           </div>
 
