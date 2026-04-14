@@ -50,7 +50,7 @@ export default function Contact() {
     const { error: dbError } = await supabase.from('contact_messages').insert({
       name: form.name,
       email: form.email,
-      subject: form.subject,
+      subject: `Portfolio: ${form.subject || 'Nouveau message'}`,
       message: form.message,
     });
 
@@ -88,7 +88,7 @@ export default function Contact() {
               <h3 className="text-white font-bold text-xl mb-5">Contactez-Moi</h3>
               <div className="flex flex-col gap-5">
                 {[
-                  { icon: Mail, label: 'Email', value: 'mpunantitarubain@gmail.com', href: 'mailto:mpunantitarubain@gmail.com' },
+                  { icon: Mail, label: 'Email', value: 'mpunantitarubain@gmail.com', href: `mailto:mpunantitarubain@gmail.com?subject=${encodeURIComponent('Message depuis le Portfolio')}` },
                   { icon: Phone, label: 'Téléphone', value: '+243 988 281 363', href: 'tel:+243988281363' },
                   { icon: MapPin, label: 'Localisation', value: '12 Betsaida, Kasangulu, LBB', href: null },
                 ].map(({ icon: Icon, label, value, href }) => (
@@ -118,7 +118,7 @@ export default function Contact() {
               <h4 className="text-white font-semibold mb-4">Réseaux Sociaux</h4>
               <div className="flex flex-col gap-3">
                 <a
-                  href="https://wa.me/243988281363"
+                  href={`https://wa.me/243988281363?text=${encodeURIComponent("Bonjour Rubain, j'aimerais discuter avec vous de mon projet (via Portfolio).")}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-3 px-5 py-3.5 rounded-xl border border-white/8 hover:border-green-400/40 hover:bg-green-400/5 transition-all duration-200 group"

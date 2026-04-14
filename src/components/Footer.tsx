@@ -11,7 +11,7 @@ const navLinks = [
 const socialLinks = [
   {
     icon: MessageCircle,
-    href: 'https://whatsapp.com/channel/0029VbAS0aW5Ejxp9Zmaby3v',
+    href: `https://wa.me/243988281363?text=${encodeURIComponent("Bonjour Rubain, je viens de voir votre portfolio et j'aimerais discuter.")}`,
     label: 'WhatsApp',
     color: 'hover:text-green-400',
   },
@@ -29,7 +29,7 @@ const socialLinks = [
   },
   {
     icon: Mail,
-    href: 'mailto:mpunantitarubain@gmail.com',
+    href: `mailto:mpunantitarubain@gmail.com?subject=${encodeURIComponent('Message depuis le Portfolio')}`,
     label: 'Email',
     color: 'hover:text-electric',
   },

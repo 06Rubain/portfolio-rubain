@@ -88,7 +88,7 @@ export default function About() {
 
             <div className="flex flex-wrap gap-3">
               <a
-                href="https://wa.me/243988281363"
+                href={`https://wa.me/243988281363?text=${encodeURIComponent("Bonjour Rubain, j'aimerais discuter avec vous de mon projet.")}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-primary"
