@@ -47,7 +47,7 @@ export default function About() {
               </div>
               <div className="absolute -bottom-6 -right-6 glass rounded-2xl px-5 py-4 border border-electric/20">
                 <div className="text-electric text-2xl font-bold">3+</div>
-                <div className="text-slate-400 text-xs mt-0.5">Years of Experience</div>
+                <div className="text-slate-400 text-xs mt-0.5">Années d'Expérience</div>
               </div>
             </div>
           </div>

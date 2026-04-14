@@ -167,7 +167,7 @@ export default function Hero() {
 
             <div className="absolute -top-5 -right-6 glass rounded-2xl p-4 border border-electric/20 animate-float" style={{ animationDelay: '2.5s' }}>
               <div className="text-center">
-                <div className="text-electric text-xl font-bold">CEO</div>
+                <div className="text-electric text-xl font-bold">CEO & Fondateur</div>
                 <div className="text-slate-400 text-xs">OmniCom</div>
               </div>
             </div>
