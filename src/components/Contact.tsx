@@ -198,7 +198,7 @@ export default function Contact() {
                         name="name"
                         value={form.name}
                         onChange={handleChange}
-                        placeholder="Votre nom"
+                        placeholder=""
                         className="px-4 py-3 rounded-xl text-white placeholder-slate-600 text-sm outline-none focus:border-electric transition-colors"
                         style={{
                           background: 'rgba(255,255,255,0.04)',

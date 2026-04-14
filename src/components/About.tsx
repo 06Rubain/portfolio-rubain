@@ -54,7 +54,7 @@ export default function About() {
 
           <div className="flex-1 reveal-right">
             <div className="section-tag">{t('about.tag')}</div>
-            <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-6 leading-tight">
+            <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-6 leading-tight">
               {t('about.title1')}
               <span className="gradient-text">{t('about.title2')}</span>
             </h2>
@@ -63,10 +63,7 @@ export default function About() {
               {t('about.desc1')}
             </p>
             <p className="text-slate-400 leading-relaxed mb-8">
-              My mission is to bridge the gap between innovation and impact, helping businesses
-              and individuals unlock their full potential through cutting-edge technology. From web
-              apps to embedded systems, I craft every solution with precision, creativity, and
-              purpose.
+              {t('about.desc2')}
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">

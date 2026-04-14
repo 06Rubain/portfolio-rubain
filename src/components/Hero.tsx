@@ -80,7 +80,7 @@ export default function Hero() {
         >
           <div className="section-tag mb-6">{t('hero.available')}</div>
 
-          <h1 className="text-5xl md:text-6xl xl:text-7xl font-extrabold leading-tight tracking-tight mb-6">
+          <h1 className="text-3xl sm:text-4xl md:text-6xl xl:text-7xl font-extrabold leading-tight tracking-tight mb-6">
             <span className="text-white">{t('hero.build')}</span>
             <span className="gradient-text">{t('hero.powerful')}</span>
             <br />
@@ -89,7 +89,7 @@ export default function Hero() {
           </h1>
 
           <div className="flex items-center gap-3 mb-6 h-8">
-            <span className="text-slate-400 text-lg">{language === 'fr' ? 'Je suis' : 'I am a'}</span>
+            <span className="text-slate-400 text-lg">{t('hero.iam')}</span>
             <span className="text-electric text-lg font-semibold min-w-[200px]">
               {displayed}
               <span className="animate-pulse">|</span>
