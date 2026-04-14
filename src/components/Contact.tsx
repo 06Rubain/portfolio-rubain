@@ -41,6 +41,12 @@ export default function Contact() {
     setSending(true);
     setError('');
 
+    if (!supabase) {
+      setError('Service momentanément indisponible. Veuillez me contacter par email.');
+      setSending(false);
+      return;
+    }
+
     const { error: dbError } = await supabase.from('contact_messages').insert({
       name: form.name,
       email: form.email,
