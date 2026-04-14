@@ -175,15 +175,15 @@ export default function Contact() {
                   >
                     <CheckCircle2 size={32} className="text-electric" />
                   </div>
-                  <h3 className="text-white font-bold text-xl">Message Sent!</h3>
+                  <h3 className="text-white font-bold text-xl">Message Envoyé !</h3>
                   <p className="text-slate-400 max-w-sm">
-                    Thank you for reaching out. I'll get back to you within 24 hours.
+                    Merci de m'avoir contacté. Je vous répondrai sous 24 heures.
                   </p>
                   <button
                     onClick={() => setSent(false)}
                     className="btn-outline mt-2"
                   >
-                    Send Another
+                    Envoyer un autre
                   </button>
                 </div>
               ) : (
@@ -191,14 +191,14 @@ export default function Contact() {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     <div className="flex flex-col gap-2">
                       <label className="text-slate-400 text-xs font-medium uppercase tracking-wider">
-                        Full Name *
+                        Nom Complet *
                       </label>
                       <input
                         type="text"
                         name="name"
                         value={form.name}
                         onChange={handleChange}
-                        placeholder="John Doe"
+                        placeholder="Votre nom"
                         className="px-4 py-3 rounded-xl text-white placeholder-slate-600 text-sm outline-none focus:border-electric transition-colors"
                         style={{
                           background: 'rgba(255,255,255,0.04)',
@@ -210,14 +210,14 @@ export default function Contact() {
                     </div>
                     <div className="flex flex-col gap-2">
                       <label className="text-slate-400 text-xs font-medium uppercase tracking-wider">
-                        Email Address *
+                        Adresse Email *
                       </label>
                       <input
                         type="email"
                         name="email"
                         value={form.email}
                         onChange={handleChange}
-                        placeholder="john@example.com"
+                        placeholder="votre@exemple.com"
                         className="px-4 py-3 rounded-xl text-white placeholder-slate-600 text-sm outline-none transition-colors"
                         style={{
                           background: 'rgba(255,255,255,0.04)',
@@ -231,14 +231,14 @@ export default function Contact() {
 
                   <div className="flex flex-col gap-2">
                     <label className="text-slate-400 text-xs font-medium uppercase tracking-wider">
-                      Subject
+                      Sujet
                     </label>
                     <input
                       type="text"
                       name="subject"
                       value={form.subject}
                       onChange={handleChange}
-                      placeholder="What's this about?"
+                      placeholder="De quoi s'agit-il ?"
                       className="px-4 py-3 rounded-xl text-white placeholder-slate-600 text-sm outline-none transition-colors"
                       style={{
                         background: 'rgba(255,255,255,0.04)',
@@ -258,7 +258,7 @@ export default function Contact() {
                       value={form.message}
                       onChange={handleChange}
                       rows={5}
-                      placeholder="Tell me about your project..."
+                      placeholder="Parlez-moi de votre projet..."
                       className="px-4 py-3 rounded-xl text-white placeholder-slate-600 text-sm outline-none resize-none transition-colors"
                       style={{
                         background: 'rgba(255,255,255,0.04)',
@@ -284,7 +284,7 @@ export default function Contact() {
                       </>
                     ) : (
                       <>
-                        <Send size={18} /> Send Message
+                        <Send size={18} /> Envoyer le Message
                       </>
                     )}
                   </button>

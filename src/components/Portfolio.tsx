@@ -5,15 +5,15 @@ import { useLanguage } from '../lib/LanguageContext';
 const projects = [
   {
     title: 'Facial Recognition System',
-    desc: 'AI-powered facial recognition application with real-time detection, user authentication, and access control features.',
+    desc: 'Application de reconnaissance faciale boostée par l\'IA avec détection en temps réel et contrôle d\'accès.',
     image: '/facial-recognition.png',
     tags: ['Python', 'OpenCV', 'AI/ML', 'Django'],
-    category: 'AI / ML',
+    category: 'IA / ML',
     color: '#0ea5e9',
   },
   {
     title: 'Smart Tracking Platform',
-    desc: 'Intelligent IoT-based tracking system for fleet management and asset monitoring with live dashboards.',
+    desc: 'Système de suivi intelligent basé sur l\'IoT pour la gestion de flotte et le monitoring d\'actifs.',
     image: 'https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg?auto=compress&cs=tinysrgb&w=800',
     tags: ['React', 'Node.js', 'IoT', 'Maps API'],
     category: 'Web App',
@@ -21,10 +21,10 @@ const projects = [
   },
   {
     title: 'OmniCom Corporate Site',
-    desc: 'Premium corporate website for OmniCom featuring modern UI, animations, and a full-stack CMS.',
+    desc: 'Site web professionnel pour OmniCom avec interface moderne, animations et CMS intégré.',
     image: '/omnicom.png',
     tags: ['React', 'Tailwind', 'Django', 'PostgreSQL'],
-    category: 'Website',
+    category: 'Site Web',
     color: '#0284c7',
   },
   {
