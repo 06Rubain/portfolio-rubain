@@ -7,6 +7,7 @@ import Portfolio from './components/Portfolio';
 import Impact from './components/Impact';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import OmniComBadge from './components/OmniComBadge';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
       <Impact />
       <Contact />
       <Footer />
+      <OmniComBadge />
     </div>
   );
 }
