@@ -116,6 +116,16 @@ export default function Portfolio() {
   };
 
   useEffect(() => {
+    let interval: NodeJS.Timeout;
+    if (selectedProject && selectedProject.images.length > 1) {
+      interval = setInterval(() => {
+        nextImage();
+      }, 4000);
+    }
+    return () => clearInterval(interval);
+  }, [selectedProject, currentImageIndex]);
+
+  useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (!selectedProject) return;
       if (e.key === 'ArrowRight') nextImage();
