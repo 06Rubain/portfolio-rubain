@@ -1,12 +1,12 @@
 import { useRef, useEffect, useState } from 'react';
-import { ExternalLink, Github, Eye, X } from 'lucide-react';
+import { ExternalLink, Github, Eye, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useLanguage } from '../lib/LanguageContext';
 
 const projects = [
   {
     title: 'Oradie Portfolio',
     desc: 'Portfolio digital intelligent avec une interface élégante, des solutions d\'IA et un design créatif.',
-    image: '/oradie-hero.png',
+    images: ['/oradie-hero.png', '/oradie-about.png'],
     link: 'https://oradie-portfolio.vercel.app/',
     tags: ['React', 'AI', 'Creative Design'],
     category: 'Website',
@@ -16,7 +16,7 @@ const projects = [
   {
     title: 'Facial Recognition System',
     desc: 'Application de reconnaissance faciale boostée par l\'IA avec détection en temps réel et contrôle d\'accès.',
-    image: '/facial-recognition.png',
+    images: ['/facial-recognition.png'],
     link: '#',
     tags: ['Python', 'OpenCV', 'AI/ML', 'Django'],
     category: 'AI / ML',
@@ -26,7 +26,7 @@ const projects = [
   {
     title: 'Smart Tracking Platform',
     desc: 'Système de suivi intelligent basé sur l\'IoT pour la gestion de flotte et le monitoring d\'actifs.',
-    image: 'https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg?auto=compress&cs=tinysrgb&w=800',
+    images: ['https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg?auto=compress&cs=tinysrgb&w=800'],
     link: '#',
     tags: ['React', 'Node.js', 'IoT', 'Maps API'],
     category: 'Web App',
@@ -36,7 +36,7 @@ const projects = [
   {
     title: 'OmniCom Corporate Site',
     desc: 'Site web professionnel pour OmniCom avec interface moderne, animations et CMS intégré.',
-    image: '/omnicom.png',
+    images: ['/omnicom.png'],
     link: 'https://omnicom-agency.vercel.app/',
     tags: ['React', 'Tailwind', 'Django', 'PostgreSQL'],
     category: 'Website',
@@ -46,7 +46,7 @@ const projects = [
   {
     title: 'Campus Market',
     desc: 'Plateforme E-commerce étudiante pour la vente de produits locaux, services de restauration et gestion des commandes.',
-    image: '/campus-market.jpeg',
+    images: ['/campus-market.jpeg'],
     link: '#',
     tags: ['E-Commerce', 'React', 'Node.js', 'PostgreSQL'],
     category: 'Web App',
@@ -56,7 +56,7 @@ const projects = [
   {
     title: 'Student Connect',
     desc: 'Plateforme centrale pour fusionner vos talents, analyser votre parcours SWOT et accélérer votre insertion IPS.',
-    image: '/studentconnect.png',
+    images: ['/studentconnect.png'],
     link: 'https://student-connect-topaz.vercel.app/',
     tags: ['React', 'Réseau Social'],
     category: 'Web App',
@@ -66,7 +66,7 @@ const projects = [
   {
     title: 'SO-GA Mille Services',
     desc: 'Votre partenaire de confiance en RDC. Excellence, professionnalisme et satisfaction client au coeur de nos missions.',
-    image: '/soga.png',
+    images: ['/soga.png'],
     link: 'https://so-ga.vercel.app/',
     tags: ['Corporate', 'Design'],
     category: 'Website',
@@ -80,7 +80,8 @@ const categories = ['All', 'AI / ML', 'Web App', 'Website'];
 export default function Portfolio() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const [filter, setFilter] = useState('All');
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const { t } = useLanguage();
 
   useEffect(() => {
@@ -101,6 +102,29 @@ export default function Portfolio() {
   }, []);
 
   const filtered = filter === 'All' ? projects : projects.filter((p) => p.category === filter);
+
+  const nextImage = (e?: React.MouseEvent) => {
+    e?.stopPropagation();
+    if (!selectedProject) return;
+    setCurrentImageIndex((prev: number) => (prev + 1) % selectedProject.images.length);
+  };
+
+  const prevImage = (e?: React.MouseEvent) => {
+    e?.stopPropagation();
+    if (!selectedProject) return;
+    setCurrentImageIndex((prev: number) => (prev - 1 + selectedProject.images.length) % selectedProject.images.length);
+  };
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (!selectedProject) return;
+      if (e.key === 'ArrowRight') nextImage();
+      if (e.key === 'ArrowLeft') prevImage();
+      if (e.key === 'Escape') setSelectedProject(null);
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [selectedProject]);
 
   return (
     <section id="portfolio" className="py-28 relative" ref={sectionRef}>
@@ -144,7 +168,7 @@ export default function Portfolio() {
             >
               <div className="relative h-52 overflow-hidden">
                 <img
-                  src={project.image}
+                  src={project.images[0]}
                   alt={project.title}
                   className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-110"
                 />
@@ -153,7 +177,10 @@ export default function Portfolio() {
                   style={{ background: 'rgba(3,7,18,0.75)', backdropFilter: 'blur(4px)' }}
                 >
                   <button 
-                    onClick={() => setSelectedImage(project.image)}
+                    onClick={() => {
+                      setSelectedProject(project);
+                      setCurrentImageIndex(0);
+                    }}
                     className="w-11 h-11 rounded-full glass-light border border-white/15 flex items-center justify-center text-white hover:bg-electric hover:border-electric transition-all duration-200"
                     title="Voir en plein écran"
                   >
@@ -214,22 +241,43 @@ export default function Portfolio() {
       </div>
 
       {/* Fullscreen Image Modal */}
-      {selectedImage && (
+      {selectedProject && (
         <div 
           className="fixed inset-0 z-[60] flex items-center justify-center bg-black/95 p-4 md:p-10 animate-fade-in"
-          onClick={() => setSelectedImage(null)}
+          onClick={() => setSelectedProject(null)}
         >
           <button 
-            className="absolute top-6 right-6 text-white/70 hover:text-white transition-colors"
-            onClick={() => setSelectedImage(null)}
+            className="absolute top-6 right-6 text-white/70 hover:text-white transition-colors z-[70]"
+            onClick={() => setSelectedProject(null)}
           >
             <X size={32} />
           </button>
+
+          {selectedProject.images.length > 1 && (
+            <>
+              <button 
+                className="absolute left-4 md:left-10 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full glass-light flex items-center justify-center text-white hover:bg-electric transition-all z-[70]"
+                onClick={prevImage}
+              >
+                <ChevronLeft size={24} />
+              </button>
+              <button 
+                className="absolute right-4 md:right-10 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full glass-light flex items-center justify-center text-white hover:bg-electric transition-all z-[70]"
+                onClick={nextImage}
+              >
+                <ChevronRight size={24} />
+              </button>
+              <div className="absolute bottom-10 left-1/2 -translate-x-1/2 text-white/50 text-sm font-medium z-[70]">
+                {currentImageIndex + 1} / {selectedProject.images.length}
+              </div>
+            </>
+          )}
+
           <div className="relative max-w-5xl w-full h-full flex items-center justify-center">
             <img 
-              src={selectedImage} 
-              alt="Fullscreen view" 
-              className="max-w-full max-h-full object-contain rounded-lg shadow-2xl"
+              src={selectedProject.images[currentImageIndex]} 
+              alt={selectedProject.title} 
+              className="max-w-full max-h-full object-contain rounded-lg shadow-2xl transition-all duration-300"
               onClick={(e) => e.stopPropagation()}
             />
           </div>
