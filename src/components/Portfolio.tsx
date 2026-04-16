@@ -1,63 +1,85 @@
-import { useRef, useEffect, useState } from 'react';
-import { ExternalLink, Github, Eye } from 'lucide-react';
+import { ExternalLink, Github, Eye, X } from 'lucide-react';
 import { useLanguage } from '../lib/LanguageContext';
 
 const projects = [
   {
+    title: 'Oradie Portfolio',
+    desc: 'Portfolio digital intelligent avec une interface élégante, des solutions d\'IA et un design créatif.',
+    image: '/oradie-hero.png',
+    link: 'https://oradie-portfolio.vercel.app/',
+    tags: ['React', 'AI', 'Creative Design'],
+    category: 'Website',
+    color: '#0ea5e9',
+    github: null,
+  },
+  {
     title: 'Facial Recognition System',
     desc: 'Application de reconnaissance faciale boostée par l\'IA avec détection en temps réel et contrôle d\'accès.',
     image: '/facial-recognition.png',
+    link: '#',
     tags: ['Python', 'OpenCV', 'AI/ML', 'Django'],
-    category: 'IA / ML',
+    category: 'AI / ML',
     color: '#0ea5e9',
+    github: 'https://github.com/06Rubain',
   },
   {
     title: 'Smart Tracking Platform',
     desc: 'Système de suivi intelligent basé sur l\'IoT pour la gestion de flotte et le monitoring d\'actifs.',
     image: 'https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg?auto=compress&cs=tinysrgb&w=800',
+    link: '#',
     tags: ['React', 'Node.js', 'IoT', 'Maps API'],
     category: 'Web App',
     color: '#38bdf8',
+    github: null,
   },
   {
     title: 'OmniCom Corporate Site',
     desc: 'Site web professionnel pour OmniCom avec interface moderne, animations et CMS intégré.',
     image: '/omnicom.png',
+    link: 'https://omnicom-agency.vercel.app/',
     tags: ['React', 'Tailwind', 'Django', 'PostgreSQL'],
-    category: 'Site Web',
+    category: 'Website',
     color: '#0284c7',
+    github: null,
   },
   {
     title: 'Campus Market',
     desc: 'Plateforme E-commerce étudiante pour la vente de produits locaux, services de restauration et gestion des commandes.',
     image: '/campus-market.jpeg',
+    link: '#',
     tags: ['E-Commerce', 'React', 'Node.js', 'PostgreSQL'],
     category: 'Web App',
     color: '#0ea5e9',
+    github: null,
   },
   {
     title: 'Student Connect',
     desc: 'Plateforme centrale pour fusionner vos talents, analyser votre parcours SWOT et accélérer votre insertion IPS.',
     image: '/studentconnect.png',
+    link: 'https://student-connect-topaz.vercel.app/',
     tags: ['React', 'Réseau Social'],
     category: 'Web App',
     color: '#0ea5e9',
+    github: null,
   },
   {
     title: 'SO-GA Mille Services',
     desc: 'Votre partenaire de confiance en RDC. Excellence, professionnalisme et satisfaction client au coeur de nos missions.',
     image: '/soga.png',
+    link: 'https://so-ga.vercel.app/',
     tags: ['Corporate', 'Design'],
     category: 'Website',
     color: '#38bdf8',
+    github: null,
   }
 ];
 
-const categories = ['All', 'AI / ML', 'Web App', 'Website', 'Marketing', 'Embedded'];
+const categories = ['All', 'AI / ML', 'Web App', 'Website'];
 
 export default function Portfolio() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const [filter, setFilter] = useState('All');
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const { t } = useLanguage();
 
   useEffect(() => {
@@ -104,7 +126,7 @@ export default function Portfolio() {
               }`}
               style={filter === cat ? { boxShadow: '0 0 20px rgba(14,165,233,0.4)' } : {}}
             >
-              {cat}
+              {cat === 'All' ? 'Tous' : cat}
             </button>
           ))}
         </div>
@@ -129,15 +151,35 @@ export default function Portfolio() {
                   className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4"
                   style={{ background: 'rgba(3,7,18,0.75)', backdropFilter: 'blur(4px)' }}
                 >
-                  <button className="w-11 h-11 rounded-full glass-light border border-white/15 flex items-center justify-center text-white hover:bg-electric hover:border-electric transition-all duration-200">
+                  <button 
+                    onClick={() => setSelectedImage(project.image)}
+                    className="w-11 h-11 rounded-full glass-light border border-white/15 flex items-center justify-center text-white hover:bg-electric hover:border-electric transition-all duration-200"
+                    title="Voir en plein écran"
+                  >
                     <Eye size={18} />
                   </button>
-                  <button className="w-11 h-11 rounded-full glass-light border border-white/15 flex items-center justify-center text-white hover:bg-electric hover:border-electric transition-all duration-200">
-                    <Github size={18} />
-                  </button>
-                  <button className="w-11 h-11 rounded-full glass-light border border-white/15 flex items-center justify-center text-white hover:bg-electric hover:border-electric transition-all duration-200">
-                    <ExternalLink size={18} />
-                  </button>
+                  {project.github && (
+                    <a 
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-11 h-11 rounded-full glass-light border border-white/15 flex items-center justify-center text-white hover:bg-electric hover:border-electric transition-all duration-200"
+                      title="Voir le code"
+                    >
+                      <Github size={18} />
+                    </a>
+                  )}
+                  {project.link !== '#' && (
+                    <a 
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-11 h-11 rounded-full glass-light border border-white/15 flex items-center justify-center text-white hover:bg-electric hover:border-electric transition-all duration-200"
+                      title="Visiter le site"
+                    >
+                      <ExternalLink size={18} />
+                    </a>
+                  )}
                 </div>
 
                 <span
@@ -169,6 +211,29 @@ export default function Portfolio() {
           ))}
         </div>
       </div>
+
+      {/* Fullscreen Image Modal */}
+      {selectedImage && (
+        <div 
+          className="fixed inset-0 z-[60] flex items-center justify-center bg-black/95 p-4 md:p-10 animate-fade-in"
+          onClick={() => setSelectedImage(null)}
+        >
+          <button 
+            className="absolute top-6 right-6 text-white/70 hover:text-white transition-colors"
+            onClick={() => setSelectedImage(null)}
+          >
+            <X size={32} />
+          </button>
+          <div className="relative max-w-5xl w-full h-full flex items-center justify-center">
+            <img 
+              src={selectedImage} 
+              alt="Fullscreen view" 
+              className="max-w-full max-h-full object-contain rounded-lg shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
+            />
+          </div>
+        </div>
+      )}
     </section>
   );
 }
