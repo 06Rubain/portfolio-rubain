@@ -1,3 +1,4 @@
+import { useRef, useEffect, useState } from 'react';
 import { ExternalLink, Github, Eye, X } from 'lucide-react';
 import { useLanguage } from '../lib/LanguageContext';
 
