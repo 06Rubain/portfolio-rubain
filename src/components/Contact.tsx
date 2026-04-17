@@ -1,6 +1,4 @@
-import { useRef, useEffect, useState } from 'react';
 import { Mail, Phone, MapPin, Send, MessageCircle, Linkedin, Facebook, Loader2, CheckCircle2, Github } from 'lucide-react';
-import { supabase } from '../lib/supabase';
 
 export default function Contact() {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -41,25 +39,35 @@ export default function Contact() {
     setSending(true);
     setError('');
 
-    if (!supabase) {
-      setError('Service momentanément indisponible. Veuillez me contacter par email.');
+    try {
+      const response = await fetch('https://formsubmit.co/ajax/mpunantitarubain@gmail.com', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          subject: `Portfolio: ${form.subject || 'Nouveau message'}`,
+          message: form.message,
+          _template: 'table', // Use the table template for better email formatting
+          _subject: `Portfolio Contact - ${form.name}` // Custom email subject
+        })
+      });
+
+      const result = await response.json();
+
+      if (response.ok && result.success === 'true') {
+        setSent(true);
+        setForm({ name: '', email: '', subject: '', message: '' });
+      } else {
+        throw new Error(result.message || 'Erreur lors de l\'envoi.');
+      }
+    } catch (err: any) {
+      setError(err.message || 'Une erreur est survenue. Veuillez réessayer ou utiliser l\'email direct.');
+    } finally {
       setSending(false);
-      return;
-    }
-
-    const { error: dbError } = await supabase.from('contact_messages').insert({
-      name: form.name,
-      email: form.email,
-      subject: `Portfolio: ${form.subject || 'Nouveau message'}`,
-      message: form.message,
-    });
-
-    setSending(false);
-    if (dbError) {
-      setError('Something went wrong. Please try again.');
-    } else {
-      setSent(true);
-      setForm({ name: '', email: '', subject: '', message: '' });
     }
   };
 
