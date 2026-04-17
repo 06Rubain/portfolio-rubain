@@ -1,3 +1,4 @@
+import { useRef, useEffect, useState } from 'react';
 import { Mail, Phone, MapPin, Send, MessageCircle, Linkedin, Facebook, Loader2, CheckCircle2, Github } from 'lucide-react';
 
 export default function Contact() {
