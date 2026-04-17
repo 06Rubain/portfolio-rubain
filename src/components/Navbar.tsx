@@ -7,6 +7,7 @@ const navLinks = [
   { key: 'nav.skills', href: '#skills' },
   { key: 'nav.services', href: '#services' },
   { key: 'nav.portfolio', href: '#portfolio' },
+  { key: 'nav.documents', href: '#documents' },
   { key: 'nav.contact', href: '#contact' },
 ] as const;
 

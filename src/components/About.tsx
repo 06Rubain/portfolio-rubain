@@ -96,7 +96,7 @@ export default function About() {
                 <Phone size={16} /> {t('about.talk')}
               </a>
               <a
-                href="/Minimalist Modern Professional CV Resume (2).jpg"
+                href="/CV.pdf"
                 download
                 className="btn-outline"
               >
