@@ -50,10 +50,12 @@ export default function Contact() {
         body: JSON.stringify({
           name: form.name,
           email: form.email,
-          subject: `Portfolio: ${form.subject || 'Nouveau message'}`,
+          subject: form.subject || 'Nouveau message',
           message: form.message,
-          _template: 'table', // Use the table template for better email formatting
-          _subject: `Portfolio Contact - ${form.name}` // Custom email subject
+          _template: 'table',
+          _subject: `Portfolio: Message de ${form.name}`,
+          _logo: 'https://portfolio-rubain.vercel.app/hero.jpeg',
+          _captcha: 'false'
         })
       });
 
