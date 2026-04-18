@@ -4,6 +4,7 @@ import { Mail, Phone, MapPin, Send, MessageCircle, Linkedin, Facebook, Loader2, 
 export default function Contact() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' });
+  const [file, setFile] = useState<File | null>(null);
   const [sending, setSending] = useState(false);
   const [sent, setSent] = useState(false);
   const [error, setError] = useState('');
@@ -31,32 +32,50 @@ export default function Contact() {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      const selectedFile = e.target.files[0];
+      if (selectedFile.size > 5 * 1024 * 1024) {
+        setError('Le fichier est trop volumineux (max 5Mo).');
+        return;
+      }
+      setFile(selectedFile);
+      setError('');
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!form.name || !form.email || !form.message) {
-      setError('Please fill in all required fields.');
+      setError('Veuillez remplir tous les champs obligatoires.');
       return;
     }
     setSending(true);
     setError('');
 
     try {
+      const formData = new FormData();
+      formData.append('name', form.name);
+      formData.append('email', form.email);
+      formData.append('subject', form.subject || 'Nouveau message');
+      formData.append('message', form.message);
+      
+      // Hidden fields for FormSubmit
+      formData.append('_template', 'table');
+      formData.append('_subject', `Portfolio: Message de ${form.name}`);
+      formData.append('_logo', 'https://portfolio-rubain.vercel.app/icon.jpeg');
+      formData.append('_captcha', 'false');
+
+      if (file) {
+        formData.append('attachment', file);
+      }
+
       const response = await fetch('https://formsubmit.co/ajax/mpunantitarubain@gmail.com', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
           'Accept': 'application/json'
         },
-        body: JSON.stringify({
-          name: form.name,
-          email: form.email,
-          subject: form.subject || 'Nouveau message',
-          message: form.message,
-          _template: 'table',
-          _subject: `Portfolio: Message de ${form.name}`,
-          _logo: 'https://portfolio-rubain.vercel.app/hero.jpeg',
-          _captcha: 'false'
-        })
+        body: formData
       });
 
       const result = await response.json();
@@ -64,11 +83,12 @@ export default function Contact() {
       if (response.ok && result.success === 'true') {
         setSent(true);
         setForm({ name: '', email: '', subject: '', message: '' });
+        setFile(null);
       } else {
         throw new Error(result.message || 'Erreur lors de l\'envoi.');
       }
     } catch (err: any) {
-      setError(err.message || 'Une erreur est survenue. Veuillez réessayer ou utiliser l\'email direct.');
+      setError(err.message || 'Une erreur est survenue. Veuillez réessayer.');
     } finally {
       setSending(false);
     }
@@ -258,6 +278,32 @@ export default function Contact() {
                       onFocus={(e) => (e.target.style.borderColor = '#0ea5e9')}
                       onBlur={(e) => (e.target.style.borderColor = 'rgba(255,255,255,0.08)')}
                     />
+                  </div>
+
+                  <div className="flex flex-col gap-2">
+                    <label className="text-slate-400 text-xs font-medium uppercase tracking-wider">
+                      Joindre une Image / Photo
+                    </label>
+                    <div className="relative">
+                      <input
+                        type="file"
+                        accept="image/*"
+                        onChange={handleFileChange}
+                        className="hidden"
+                        id="file-upload"
+                      />
+                      <label 
+                        htmlFor="file-upload"
+                        className="flex items-center justify-between px-4 py-3 rounded-xl text-sm border border-white/10 bg-white/5 cursor-pointer hover:border-electric/50 transition-all"
+                      >
+                        <span className={file ? 'text-white' : 'text-slate-500'}>
+                          {file ? file.name : 'Choisir une image...'}
+                        </span>
+                        <div className="text-electric text-xs font-bold uppercase tracking-widest px-3 py-1 bg-electric/10 rounded-lg">
+                          Parcourir
+                        </div>
+                      </label>
+                    </div>
                   </div>
 
                   <div className="flex flex-col gap-2">
